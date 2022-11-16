@@ -30,15 +30,17 @@ def dirPath(destination, str, season):
 def Main(source, destination, number, option):
     source_files = []
 
+    number_string = "{:02d}".format(number)
+
     for root, dirs, files in os.walk(source):
         for file in files:
             source_files.append(os.path.join(root,file))
 
 
     for index, source_file in enumerate(source_files):
-        ss_destination_file = ss_rename_file(destination, source_file, number, index+1)
-        destination_file = rename_file(destination, source_file, number)
-        path = dirPath(destination, source_file, number)
+        ss_destination_file = ss_rename_file(destination, source_file, number_string, index+1)
+        destination_file = rename_file(destination, source_file, number_string)
+        path = dirPath(destination, source_file, number_string)
         if not os.path.exists(path):
             os.mkdir(path)
         if option == 1:
@@ -50,7 +52,7 @@ if __name__ == "__main__":
     # 0 = [One Pace][XXX-XXX] {ARC} {##} [###p][########].mkv
     # 1 = [One Pace] Chapter 700-701 [###p][########].mkv
     option = 0 # Set option as per video file name format ^^
-    source = r"C:\Users\Simon\Documents\One Pace\[One Pace][603-653] Fishman Island [720p]" # Set source location
+    source = r"C:\Users\Simon\Documents\One Pace\[One Pace][42, 22] Gaimon [480p]" # Set source location
     destination = r"C:\Users\Simon\Documents\Plex\TV Shows" # Set destination location
-    season = 26 # set season number
+    season = 4 # set season number
     Main(source, destination, season, option)
