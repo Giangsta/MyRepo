@@ -45,8 +45,12 @@ def Main(source, destination, number, option):
             os.mkdir(path)
         if option == 1:
             shutil.copyfile(source_file, ss_destination_file)
+            print(ss_destination_file)
         elif option == 0:
             shutil.copyfile(source_file, destination_file)
+            print(destination_file)
+        else:
+            print("Option not set correctly")
 
 if __name__ == "__main__":
     # 0 = [One Pace][XXX-XXX] {ARC} {##} [###p][########].mkv
